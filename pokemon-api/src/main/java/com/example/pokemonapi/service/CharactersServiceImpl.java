@@ -4,6 +4,8 @@ import com.example.pokemonapi.entity.PokemonCharacters;
 import com.example.pokemonapi.mapper.EntityToDtoMapper;
 import com.example.pokemonapi.model.PokemonCharacterDto;
 import com.example.pokemonapi.model.PokemonCharacterPage;
+import com.example.pokemonapi.model.PokemonCharacterSearchCriteria;
+import com.example.pokemonapi.repository.PokemonCharacterCriteriaRepository;
 import com.example.pokemonapi.repository.PokemonCharactersRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,8 @@ public class CharactersServiceImpl implements CharactersService{
 
     private final PokemonCharactersRepository pokemonCharactersRepository;
 
+    private final PokemonCharacterCriteriaRepository pokemonCharacterCriteriaRepository;
+
     private final EntityToDtoMapper entityToDtoMapper;
 
     @Override
@@ -36,8 +40,8 @@ public class CharactersServiceImpl implements CharactersService{
     }
 
     @Override
-    public Page<PokemonCharacterDto> getCharacters(PokemonCharacterPage pokemonCharacterPage) {
-        Page<PokemonCharacters> pokemonCharactersPage = pokemonCharactersRepository.findAll(getPageable(pokemonCharacterPage));
+    public Page<PokemonCharacterDto> getCharacters(PokemonCharacterPage pokemonCharacterPage, PokemonCharacterSearchCriteria pokemonCharacterSearchCriteria) {
+        Page<PokemonCharacters> pokemonCharactersPage = pokemonCharacterCriteriaRepository.findAllWithFilters(pokemonCharacterPage, pokemonCharacterSearchCriteria);
         return pokemonCharactersPage.map(x -> entityToDtoMapper.pokemonEntityToPokemonDto(x));
     }
 

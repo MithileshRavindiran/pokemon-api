@@ -3,6 +3,8 @@ package com.example.pokemonapi.controller;
 import com.example.pokemonapi.exception.ErrorResponse;
 import com.example.pokemonapi.model.PokemonCharacterDto;
 import com.example.pokemonapi.model.PokemonCharacterPage;
+import com.example.pokemonapi.model.PokemonCharacterSearchCriteria;
+import com.example.pokemonapi.repository.PokemonCharacterCriteriaRepository;
 import com.example.pokemonapi.service.CharactersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -39,7 +41,7 @@ public class PokemonController {
                     content = @Content(mediaType = "application/json",schema = @Schema(implementation = ErrorResponse.class)))
     })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<Page<PokemonCharacterDto>> getPokemonCharacters(@PageableDefault PokemonCharacterPage pokemonCharacterPage) {
-        return new ResponseEntity<>(charactersService.getCharacters(pokemonCharacterPage), HttpStatus.OK);
+    ResponseEntity<Page<PokemonCharacterDto>> getPokemonCharacters(@PageableDefault PokemonCharacterPage pokemonCharacterPage, PokemonCharacterSearchCriteria pokemonCharacterSearchCriteria) {
+        return new ResponseEntity<>(charactersService.getCharacters(pokemonCharacterPage, pokemonCharacterSearchCriteria), HttpStatus.OK);
     }
 }
