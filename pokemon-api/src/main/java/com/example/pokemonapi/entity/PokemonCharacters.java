@@ -32,9 +32,9 @@ public class PokemonCharacters {
     // i can't do the  filtering out type now to create a table and re use it again
     //private Set<CharacterType> types;
 
-    private String primaryType;
+    private String typeOne;
 
-    private String secondaryType;
+    private String typeTwo;
 
     private Integer total;
 
