@@ -53,19 +53,19 @@ public class CSVFileParser implements  FileParseType{
     }
 
     private Function<CSVRecord, PokemonCharacters> getPokemonCharactersFunction() {
-        return record -> PokemonCharacters.builder()
-                .name(record.get(NAME))
-                .typeOne(record.get(TYPE_ONE))
-                .typeTwo(record.get(TYPE_TWO))
-                .total(Integer.valueOf(TOTAL))
-                .hp(Integer.valueOf(HIT_POINTS))
-                .attack(Integer.valueOf(ATTACK))
-                .defense(Integer.valueOf(DEFENSE))
-                .specialAttack(Integer.valueOf(SPECIAL_ATTACK))
-                .specialDefense(Integer.valueOf(SPECIAL_DEFENSE))
-                .speed(Integer.valueOf(SPEED))
-                .generation(Integer.valueOf(GENERATION))
-                .legendary(Integer.valueOf(LEGENDARY) == 1 ? Boolean.TRUE : Boolean.FALSE)
+        return pokemonCharacter -> PokemonCharacters.builder()
+                .name(pokemonCharacter.get(NAME))
+                .typeOne(pokemonCharacter.get(TYPE_ONE))
+                .typeTwo(pokemonCharacter.get(TYPE_TWO))
+                .total(Integer.valueOf(pokemonCharacter.get(TOTAL)))
+                .hp(Integer.valueOf(pokemonCharacter.get(HIT_POINTS)))
+                .attack(Integer.valueOf(pokemonCharacter.get(ATTACK)))
+                .defense(Integer.valueOf(pokemonCharacter.get(DEFENSE)))
+                .specialAttack(Integer.valueOf(pokemonCharacter.get(SPECIAL_ATTACK)))
+                .specialDefense(Integer.valueOf(pokemonCharacter.get(SPECIAL_DEFENSE)))
+                .speed(Integer.valueOf(pokemonCharacter.get(SPEED)))
+                .generation(Integer.valueOf(pokemonCharacter.get(GENERATION)))
+                .legendary(pokemonCharacter.get(LEGENDARY).equals("True") ? Boolean.TRUE : Boolean.FALSE)
                 .build();
     }
 }
