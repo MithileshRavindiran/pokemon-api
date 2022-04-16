@@ -1,28 +1,13 @@
-package com.example.pokemonapi.entity;
+package com.example.pokemonapi.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Builder
-public class PokemonCharacters {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@NoArgsConstructor
+public class PokemonCharacterDto {
 
     private String name;
 
@@ -49,7 +34,4 @@ public class PokemonCharacters {
     private Integer speed;
 
     private Integer generation;
-
-    private boolean legendary;
-
 }

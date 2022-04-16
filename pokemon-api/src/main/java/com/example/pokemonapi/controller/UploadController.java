@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/pokemon")
-public class PokemonUploadController {
+public class UploadController {
 
    private final CharactersExtractor charactersExtractor;
 
